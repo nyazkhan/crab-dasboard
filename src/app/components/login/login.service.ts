@@ -19,8 +19,8 @@ export class LoginService {
     return this.http.post('admin/users', 1);
 
   }
-  approveRestaurant(id) {
-    return this.http.post('admin/approve', id);
+  changeRestaurantStatus(status) {
+    return this.http.post('admin/updateStatus', status);
 
   }
 }

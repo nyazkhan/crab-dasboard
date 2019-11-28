@@ -20,6 +20,10 @@ export class DashboardComponent implements OnInit {
 
   restaurantList: any = [];
   rejectionComment = '';
+  selectedRestaurantId: any;
+  selectedStatusId: any;
+  status: any;
+
   constructor(
     private loginService: LoginService,
     private router: Router,
@@ -37,23 +41,47 @@ export class DashboardComponent implements OnInit {
       if (res.status === 200) {
 
         this.restaurantList = res.data;
+
       }
     });
 
 
   }
 
-  approved(id) {
-    this.loginService.approveRestaurant(id).subscribe((res) => {
+  changeStatusOfRestaurant(id, statusId, status) {
+    this.selectedRestaurantId = id;
+    this.selectedStatusId = statusId;
+    this.status = status;
+
+  }
+  approved(id, Status) {
+    this.loginService.changeRestaurantStatus({
+
+      userId: id,
+      status: Status,
+
+    }).subscribe((res) => {
       if (res.status === 200) {
         this.tostService.showNotificationSuccess('Restaurant Approved Successfuly');
       }
     });
   }
-
   onSubmit() {
     console.log(this.rejectionComment);
-    $('#rejectModal').modal('hide')
+    this.loginService.changeRestaurantStatus({
+
+      userId: this.selectedRestaurantId,
+      status: this.selectedStatusId,
+      reason: this.rejectionComment
+    }).subscribe((res) => {
+      if (res.status === 200) {
+        this.tostService.showNotificationSuccess(this.status + ' Successfuly');
+      }
+      $('#rejectModal').modal('hide');
+    });
+  }
+  getIdOnClick(id) {
+    this.selectedRestaurantId = id;
 
   }
 }
