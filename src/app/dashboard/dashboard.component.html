@@ -1,0 +1,312 @@
+<h4 class="heading">Dashboard</h4>
+<div class="card">
+    <div class="card-header card-header-warning">
+        <h4 class="card-title">Table Title</h4>
+        <p class="card-category">Here is a subtitle for this table</p>
+    </div>
+    <div class="card-content table-responsive table-full-width">
+        <div class="table-responsive" id="coll">
+            <table class="table table-hover ">
+
+                <thead class=" text-primary">
+
+                    <th *ngFor="let head of headerRow">{{ head }}</th>
+
+
+                </thead>
+                <tbody *ngFor="let row of restaurantList let i =index">
+
+                    <tr id="heading{{i}}" data-toggle="collapse" attr.href="#collapseExample{{i}}">
+                        <td>
+                            <span class="mainColor">{{ i+1 }}</span>
+
+                        </td>
+                        <td>{{row.createdAt | date: 'dd MMM, yyyy'}}</td>
+                        <td>{{row.name }}</td>
+                        <td>{{row.mobile }}</td>
+                        <td>{{row.email }}</td>
+                        <td>{{row.name }}</td>
+
+
+                        <td>
+                            <span *ngIf="!row.isApproved" class="badge badge-pill badge-primary">Pending</span>
+                            <span *ngIf="row.isApproved" class="badge badge-pill badge-secondary">Approved</span>
+
+
+                        </td>
+
+
+
+                    </tr>
+
+
+                    <tr class="collapse tabel-detail col-md-8 col-lg-8 " data-parent="#coll"
+                        attr.id="collapseExample{{i}}">
+                        <td colspan=8 class=" incident-details  ">
+                            <div class="row p-2 auto-cursor">
+                                <div class="card card-nav-tabs description word-break"
+                                    style="margin:10px; width:94% ; margin: auto; margin-bottom: 0px;">
+                                    <div class="card-body" style="padding-bottom: 0px;">
+                                        <div class="description-heading"> Description</div>
+                                        <p> {{row.description}}</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="card detail-box responsiveCard">
+                                    <div>
+                                        <div class="card-header card-header-info float-right text-right"
+                                            style="width:150px;">
+                                            Restaurant Details
+                                        </div>
+                                    </div>
+                                    <div class="card-body" style="padding:15px;">
+                                        <div class="row">
+                                            <div class="col-md- 6 col-lg-6 col-sm-6">
+                                                <div>
+                                                    <b>Name : </b> {{ row.name }}
+                                                </div>
+                                                <div>
+                                                    <b>Email : </b> {{ row.email }}
+                                                    <span class="badge badge-pill  badge-primary"
+                                                        *ngIf="row.isEmailVerified">Verified</span>
+
+                                                </div>
+                                                <div>
+                                                    <b>Phone : </b> {{ row.mobile }}
+                                                </div>
+                                                <div *ngIf="row.foodType==1">
+                                                    <b>Food Type :
+                                                    </b>vegetarian
+                                                    <span class="badge badge-pill  badge-primary"
+                                                        *ngIf="row.isJain">Jain</span>
+                                                </div>
+                                                <div *ngIf="row.foodType==2">
+                                                    <b>Food Type :
+                                                    </b>Non - vegetarian
+                                                </div>
+                                                <div *ngIf="row.foodType==3">
+                                                    <b>Food Type :
+                                                    </b>vegetarian & Non - vegetarian
+                                                    <span class="badge badge-pill  badge-primary"
+                                                        *ngIf="row.isJain">Jain</span>
+                                                </div>
+
+                                                <div *ngIf="!row.foodType">
+                                                    <b>Food Type :
+                                                    </b>
+                                                </div>
+                                                <div *ngIf="!row.address">
+                                                    <b>Address :</b>
+
+                                                </div>
+                                                <div *ngIf="row.address">
+                                                    <b>Address :</b>
+                                                    {{row.address.premisesNo}} ,
+                                                    {{row.address.landmark}},
+                                                    {{row.address.locality}},
+                                                    {{row.address.pincode}}
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md- 6 col-lg-6 col-sm-6">
+                                                <div *ngIf="row.restaurantType==1">
+                                                    <b>Place Type : </b> Cafe
+                                                </div>
+                                                <div *ngIf="row.restaurantType==2">
+                                                    <b>Place Type : </b> Restaurant
+                                                </div>
+                                                <div *ngIf="row.restaurantType==3">
+                                                    <b>Place Type : </b> Restaurant & Cafe
+                                                </div>
+                                                <div *ngIf="!row.restaurantType">
+                                                    <b>Place Type : </b>
+                                                </div>
+
+                                                <div>
+                                                    <b>Payment Option : </b>
+                                                    <span *ngFor="let payment of row.paymentOptions">
+                                                        <span class="badge badge-pill  badge-primary"
+                                                            *ngIf="payment == 1">Cash</span>
+                                                        <span class="badge badge-pill  badge-primary"
+                                                            *ngIf="payment ==2">Paytm</span>
+                                                        <span class="badge badge-pill  badge-primary"
+                                                            *ngIf="payment ==3">UPI Payment</span>
+                                                        <span class="badge badge-pill  badge-primary"
+                                                            *ngIf="payment ==4">Credit/Debit Card</span>
+                                                    </span>
+
+                                                </div>
+                                                <div>
+                                                    <b> Parking: </b> {{ row.isParking }}
+                                                </div>
+                                                <div>
+                                                    <b>average cost : </b> {{ row.avgCost }}
+                                                </div>
+
+
+                                                <div>
+                                                    <b>accommodation Size :
+                                                    </b>{{ row.accommodationSize }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card detail-box responsiveCard">
+                                    <div>
+                                        <div class="card-header card-header-info float-right text-right"
+                                            style="width:150px;">
+                                            Restaurant Timing
+                                        </div>
+                                    </div>
+                                    <div class="card-body" style="padding:15px;">
+                                        <div class="col-md- 6 col-lg-6 col-sm-6">
+                                            <ng-container *ngFor="let day of row.openTiming">
+                                                <div *ngIf="day.otherId == 1">
+                                                    <b>Monday : </b> {{day.value}}
+                                                </div>
+                                                <div *ngIf="day.otherId == 2">
+                                                    <b>Tuesday : </b> {{day.value}}
+                                                </div>
+                                                <div *ngIf="day.otherId == 3">
+                                                    <b>Wednesday : </b> {{day.value}}
+                                                </div>
+                                                <div *ngIf="day.otherId == 4">
+                                                    <b>Thurseday : </b> {{day.value}}
+                                                </div>
+                                                <div *ngIf="day.otherId == 5">
+                                                    <b>Friday : </b> {{day.value}}
+                                                </div>
+                                                <div *ngIf="day.otherId == 6">
+                                                    <b>Saturday : </b> {{day.value}}
+                                                </div>
+                                                <div *ngIf="day.otherId == 7">
+                                                    <b>Sunday : </b> {{day.value}}
+                                                </div>
+
+                                            </ng-container>
+                                            <div *ngIf="!row.openTiming">
+                                                <b>Time and Date Not selected By Restaurant </b>
+                                            </div>
+
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                                <div class="card detail-box responsiveCard">
+                                    <div>
+                                        <div class="card-header card-header-info float-right text-right"
+                                            style="width:150px;">
+                                            Restaurant Images
+                                        </div>
+                                    </div>
+                                    <div class="card-body" style="padding:15px;">
+
+                                        <ng-container *ngFor="let photoslist of row.list; let i=index">
+                                            <h4 class="ion-text-left  ">{{photoslist.value}}</h4>
+                                            <div class="row" *ngIf="photoslist.data.length >= 1">
+                                                <div class="col-md-3 col-lg-3 col-sm-3 menu-img"
+                                                    *ngFor="let photo of photoslist.data;let j=index">
+                                                    <img style="width: 100%;" [src]="photo.storagePath" />
+
+                                                </div>
+                                            </div>
+                                            <span class="badge badge-pill badge-primary"
+                                                *ngIf="photoslist.data.length < 1"> No Image To Show </span>
+
+                                        </ng-container>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <button class="btn btn-sm btn-outline-success margin-right" (click)="approved(row.id)"
+                                    type="submit" data-toggle="modal" data-target="#assignModal">
+                                    <i class="material-icons"> assignment_turned_in </i> Approved</button>
+
+                                <button class="btn btn-sm btn-outline-danger " type="submit" data-toggle="modal"
+                                    data-target="#rejectModal">
+                                    <i class="material-icons"> clear </i> reject</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+                <div class="col-md-8 col-lg-8" style="background: gray">
+
+                </div>
+                <!-- <tfoot>
+                    <tr *ngIf="!(filtercomplaints?.length > 0|| showLoader)">
+
+                        <td colspan="9">
+                            <div class="text-center">
+                                <img src="/assets/img/not-found.svg">
+                                <h3 class="noContent-text">No content found</h3>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" style="font-size: 70px; text-align: center;">
+                            <i *ngIf="showLoader" class="fa fa-spinner fa-spin mainColor"></i>
+                        </td>
+                    </tr>
+                    <tr *ngIf="filtercomplaints?.length>11 && showNoMore">
+
+                        <td colspan="9">
+                            <div class="text-center">
+                                <h3 class="noContent-text">No more content</h3>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot> -->
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="rejectModal" tabindex="-1" role="dialog" aria-labelledby="rejectModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content card card-stats">
+            <div class="card-header card-header-danger card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">
+                        phonelink_erase
+                    </i>
+                </div>
+                <h3 class="card-title">Reject</h3>
+            </div>
+            <div class="modal-body">
+
+                <form (ngSubmit)="onSubmit()" #rejectForm="ngForm">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <label for="comment"> rejection description</label>
+                                <br>
+                                <textarea required class="form-control" [(ngModel)]="rejectionComment" name="comment"
+                                    #comment="ngModel" id="comment"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="rejectForm.reset()"
+                            data-dismiss="modal">Close</button>
+                        <button *ngIf="!rejectButtonHide" type="submit" [disabled]="!rejectForm.valid"
+                            class="btn btn-danger">Reject</button>
+                        <button *ngIf="rejectButtonHide" type="button" class="btn btn-default"> <i
+                                class="fa fa-spinner fa-spin mainColor"></i>submitting</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

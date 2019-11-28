@@ -1,0 +1,298 @@
+
+@import "src/assets/components.scss";
+
+
+.search-results {
+    height: 100vh;
+    overflow: scroll;
+}
+
+
+.action-buttons{
+i{
+    position: relative;
+    z-index:2;
+    &:before{
+        position:absolute;
+        content:'';
+        transform-origin: center;
+        width:0px;
+        height:0px;
+        left:50%;
+        top:50%;
+        transform:translate(-50%,-50%);
+        border-radius:50%;
+        background:rgba(0,0,0,0.1);
+        transition: 0.1s;
+    }
+    &:hover{
+        color:$primary;
+        cursor: pointer;
+        &:before{
+           width:35px;
+            height:35px;
+            z-index:1;
+        }
+    }
+
+}
+}
+
+.new{
+background:#f1c40f;
+}
+.not-fixed{
+background:$danger;
+}
+.fixed{
+background:$success;
+}
+.scheduled{
+background:#03a9f4;
+}
+.assigned{
+background:#3f51b5;
+}
+
+.rotate{
+transform: rotate(180deg);
+transition:0.5s ease-in-out;
+}
+.re-open{
+background:#9c27b0;
+}
+
+tr{
+&:hover{
+    cursor: pointer;
+    .collapse-icon{
+        color:$primary;
+    }
+}
+}
+
+.incident-details{
+.product-image{
+    width: 96px;
+}
+.btn{
+    background:white;
+}
+}
+
+.assign-form{
+.material-icons{
+    color:$success;
+}
+}
+
+// .incident-detail-box{
+//     transition:0.2s ease-in box-shadow;
+//     &:hover{
+//         background:white;
+//         box-shadow:0 10px 10px rgba(0,0,0,0.1);
+//     }
+// }
+
+
+.margin-right{
+margin-right: 25px;
+}
+// .product-image{
+//     // width: 110px!important;
+// }
+.border-bottom{
+border-bottom: 1px solid #f2f2f2;
+}
+.font-size{
+font-size: 14px;
+}
+.margin-top{
+margin-top: 10px!important;
+}
+.detail-box{
+
+// margin-left: 30px;
+// margin-right: 40px;
+margin-left: 28px;
+margin-right: 18px;
+}
+.gridrow {
+  padding-bottom: 13px;
+  text-align: center;
+  position: relative;
+  &:before {
+    position: absolute;
+    content: '';
+    width: 50%;
+    border-bottom: 1px solid #f2f2f2;
+    bottom: 0;
+    left: 50%;
+    transform: translatex(-50%);
+
+}
+}
+.warantyRow {
+
+  text-align: center;
+
+}
+.border-right {
+position: relative;
+&:before {
+  position: absolute;
+  content: '';
+  height: 50px;
+  border-right: 1px solid #f2f2f2;
+  right: 0;
+  top: 50%;
+  transform: translatey(-50%);
+}
+}
+.assignDates{
+width: 45%;
+ margin: auto; 
+ margin-top: 20px!important;
+ padding:10px;
+}
+.icon{
+  font-size: 7em;
+  color: #03a9f4;
+}
+
+.timeline{
+padding:5px;
+margin-bottom:3px;
+.history{
+   margin-top: -16px;
+
+  .status{
+    padding:1px 5px;
+    border-radius:25px;
+    background:yellow;
+    display:-webkit-inline-box;
+  }
+  .status-badge{
+      margin-left: 110px;
+  }
+  .comment-name{
+      text-align: right;
+      padding-right: 24px;
+    //   padding: 20px 0 20px 5px;
+    padding-top: 20px;
+    padding-bottom: 11px;
+  }
+  .comment{
+    border-left: 2px solid #03a9f4;
+    padding:20px 0 20px 5px;
+    margin-left:-16px;
+    p{
+      margin:0px;
+    }
+    .date{
+      color: slategray;
+font-weight: 500;
+font-size: 12px;
+    }
+    position:relative;
+  }
+ 
+}
+&:last-child{
+    &:after{
+      position:absolute;
+      content:'';
+      width:15px;
+      height:15px;
+      border-radius:50%;
+      background:#03a9f4;
+      left: 154px;
+    } 
+  }
+}
+.text-center{
+text-align: center;
+img{
+    width: 250px;
+}
+}
+.margin-right{
+margin-right: 10px;
+}
+.changeEng{
+background: #962daf !important;
+}
+.assendingBtn{
+margin-bottom: 8px;
+margin-top: -5px;
+display: flex;
+background: lightgray;
+}
+.margin{
+margin-left: 0;
+margin-right: 0;
+
+}
+.filterBtn{
+border-radius: 0;
+background: transparent;
+margin-top: 0;
+width: 50%;
+margin-bottom: 0;
+margin-left: 0;
+// background: #faaafa;
+}
+
+
+// .btncolor{
+//     background-color: #962daf;
+// }
+// .filterBtn:focus{
+// }
+.btn-light:not(:disabled):not(.disabled).active, .btn-light:not(:disabled):not(.disabled):active, .show>.btn-light.dropdown-toggle{
+color: white;
+background-color: #972faf;
+border-color: #972faf;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.star-rating {
+height: 30px;
+width: 150px;
+background-color: white;
+position: relative;
+}
+
+.full-star {
+ position: absolute;
+z-index: 1;
+height: 100%;
+background-image: url('http://www.solidsignal.com/images%5CReviewStars5.png');
+background-size: 147px 28px;
+}
+
+.empty-star {
+width: 100%;
+height: 100%;  
+background-image: url('http://fitchespresso.com.au/wp-content/uploads/2013/07/5-stars.jpg');
+background-size: 150px 30px;
+}
+
+.menu-img{
+    position: relative;
+    width: 50%;
+    height: 50%;
+   
+}
