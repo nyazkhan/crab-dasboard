@@ -1,24 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { LoginService } from '../components/login/login.service';
 import { TostService } from '../providers/tost.service';
-
+import { Router } from '@angular/router';
 declare var $: any;
 
-
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
+  selector: 'app-blogger',
+  templateUrl: './blogger.component.html',
+  styleUrls: ['./blogger.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class BloggerComponent implements OnInit {
   headerRow = ['S.No ', 'Date', 'Name',
     'Phone No',
     'Email Id',
     'Description',
     'Status'];
 
-  restaurantList: any = [];
+  bloggerList: any = [];
   rejectionComment = '';
   selectedRestaurantId: any;
   selectedStatusId: any;
@@ -37,11 +35,11 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
 
-    this.loginService.getData(1).subscribe((res) => {
+    this.loginService.getData(2).subscribe((res) => {
       console.log(res);
-      if (res.status === 200) { 
+      if (res.status === 200) {
 
-        this.restaurantList = res.data;
+        this.bloggerList = res.data;
 
       }
     });
@@ -80,7 +78,7 @@ export class DashboardComponent implements OnInit {
     this.loginService.changeRestaurantStatus(this.updateStatus).subscribe((res) => {
       if (res.status === 200) {
         this.tostService.showNotificationSuccess(this.status + ' Successfuly');
-        this.restaurantList[this.selectedRestaurantIndex].status = this.selectedStatusId;
+        this.bloggerList[this.selectedRestaurantIndex].status = this.selectedStatusId;
         this.rejectionComment = '';
         delete this.updateStatus;
         this.updateStatus = {};
@@ -93,4 +91,3 @@ export class DashboardComponent implements OnInit {
 
   }
 }
-

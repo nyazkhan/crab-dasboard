@@ -24,6 +24,11 @@ export class SidebarComponent implements OnInit {
         icon: 'dashboard',
         route: '/dashboard'
       },
+      {
+        name: 'Blogger',
+        icon: 'dashboard',
+        route: '/blogger'
+      },
     ];
 
 

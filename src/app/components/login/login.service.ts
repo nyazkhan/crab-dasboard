@@ -15,8 +15,8 @@ export class LoginService {
     return this.http.post('user/login', userDetails);
   }
 
-  getData() {
-    return this.http.post('admin/users', 1);
+  getData(id) {
+    return this.http.post('admin/users', id);
 
   }
   changeRestaurantStatus(status) {

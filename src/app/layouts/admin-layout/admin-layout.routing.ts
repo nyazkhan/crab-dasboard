@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { AdminLayoutComponent } from './admin-layout.component';
 import { DashboardComponent } from 'src/app/dashboard/dashboard.component';
+import { BloggerComponent } from 'src/app/blogger/blogger.component';
 export const AdminLayoutRoutes: Routes = [
     {
 
@@ -9,11 +10,11 @@ export const AdminLayoutRoutes: Routes = [
 
             // { path: "edit", component: EditUserDetailsComponent },
 
-            // {
-            //     path: 'incidents', loadChildren: '../../Modules/incidents/incidents.module#IncidentsModule',
+            {
+                path: 'blogger', component: BloggerComponent,
 
-            // },
-
+            },
+            // src\app\Modules\blogger\blogger.module.ts
             // {
             //     path: 'installation', loadChildren: '../../Modules/installation/installation.module#InstallationModule',
 
